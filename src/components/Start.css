@@ -1,0 +1,12 @@
+.start{
+    color: white;
+}
+.btn{
+    padding: 20px;
+    border-radius: 30px;
+    background-color: rgb(61, 223, 126);
+    font-size: 12pt;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}

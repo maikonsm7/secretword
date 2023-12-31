@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+// CSS
 import './App.css';
+// React
+import {useCallback, useEffect, useState} from 'react'
+// Data
+import {wordsList} from './data/words'
+// Pages
+import Start from './components/Start';
+import Play from './components/Play';
+import End from './components/End';
+
+const stages = [
+  {id: 1, name: 'start'},
+  {id: 2, name: 'play'},
+  {id: 3, name: 'end'}
+]
 
 function App() {
+  const [gameStage, setGameStage] = useState(stages[0].name)
+  const [words] = useState(wordsList)
+
+  const [pickedWord, setPickedWord] = useState('')
+  const [pickedCategory, setPickedCategory] = useState('')
+  const [letters, setLetters] = useState([])
+
+  const startGame = () => {
+    setGameStage(stages[1].name)
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {gameStage === 'start' && <Start startGame={startGame}/>}
+      {gameStage === 'play' && <Play/>}
+      {gameStage === 'end' && <End/>}
     </div>
-  );
+  )
 }
 
 export default App;
